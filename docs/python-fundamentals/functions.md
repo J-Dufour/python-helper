@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Functions and Methods
 
 So far, we have explored different types that represent *data*, like numbers, text, and lists.
@@ -116,6 +120,7 @@ Here are some common built-in functions:
 | --- | --- | --- |
 | `print(obj...)` | `obj`: any number of objects | Nothing, but prints a string representation of all `obj`s to the console |
 | `input(prompt)` | `prompt`: A string prompt to print to the console before accepting input| First, this function will print `prompt` tp the console. Then, it will read all keypresses from the console until the enter key is pressed. Then, it returns all keys pressed up until that point as a `string`. |
+| `type(obj)` | `obj`: any object | The type of `obj` as an object of type `type` |
 
 
 #### Type functions
@@ -144,3 +149,30 @@ These are functions that mostly take in [sequence type](./data-types#sequence-ty
 |`min(seq)` | `seq`: a sequence-type object  usually having **all** elements of the same type | The lowest-value element in `seq` |
 |`sum(seq)` | `seq`: a sequence-type object  usually having **all** number-type elements | The sum of all elements in `seq` |
 
+
+## Methods
+
+Some functions are bound to a specific object type. For example, it would be useful to have a function that finds the first occurence of a character (or substring) within a string-type object. One could imagine a function like this:
+```python
+mystr = "hello"
+index = find_in_string(mystr, "e")
+print(index) # should be 1
+```
+This could work, but Python has a better way to go about it: *methods*. Methods are functions that are specifically associated with a type. In this case, Python has already provided us with a method to find the first occurence of a character within a string, called `find`. Every object of type `string` has a `find` method. Methods can be accessed like any other object attribute (explained later), with the `.` operator. It is important to keep in mind that **methods always take the object you called it from as their first argument**. Here is a concrete example with the exact same behaviour as the code above:
+```python
+mystr = "hello"
+index = mystr.find("e")
+print(index) # should be 1
+```
+As you can see, the `find` method takes one argument, `"e"`, but **it also has access to `mystr`**, which allows it to find the first occurence of "e" inside of `mystr`. You can think of it like a function that always has `mystr` as an "extra argument", because you called the function **from** `mystr`.
+
+Most complex data types you encounter in Python (like sequence-typed objects) will have their own methods. Some methods can change the object they were called from, like the `append` method that `list`s have:
+```python
+mylist = [1, 2, 3]
+mylist.append(4) # adds 4 to the end of mylist
+print(mylist) # should be [1, 2, 3, 4]
+```
+
+### Common Methods
+
+**TODO**
